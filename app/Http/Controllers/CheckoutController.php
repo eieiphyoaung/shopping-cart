@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Order;
 use DB;
+use Carbon\Carbon;
 
 class CheckoutController extends Controller
 {
@@ -24,7 +25,13 @@ class CheckoutController extends Controller
             'payment_method' => 'required'
         ]);
            
-        $order = Order::create($request->all());
+        $order = Order::create([
+            'name' => $request->name,
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'payment_method' => $request->payment_method,
+            'created_at' => Carbon::now()
+        ]);
 
         foreach(session('cart') as $id => $details) {
             DB::table('order_items')->insert([
@@ -35,8 +42,6 @@ class CheckoutController extends Controller
                 'total_price' => $details['quantity'] * $details['price']
             ]);
         }
-
-        // session()->flush();
         session()->forget('cart');
 
         return redirect('/checkout/thank-you');

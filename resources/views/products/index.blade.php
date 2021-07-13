@@ -17,5 +17,8 @@
         </div>
     @endforeach
 </div>
+<div class="pagination mb-5">
+        {{$products->links("pagination::bootstrap-4")}}
+</div>
     
 @endsection

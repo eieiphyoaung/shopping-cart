@@ -1,43 +1,54 @@
 @extends('layouts.master')
 
 @section('content')
-<main class="signup-form">
-    <div class="cotainer">
-        <div class="row">
-            <div class="col-lg-4 col-md-4 offset-lg-4">
-                <div class="heading">
-                    <a href="/login" class="btn-new-customer">
-                        <button type="submit" class="btn btn-block btn-signin">Sign In</button>
-                    </a>
-                </div>
+<main class="signup-form mt-5">
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-lg-6 col-md-6">
                 <div class="card">
                     <h3 class="card-header text-center">Register User</h3>
                     <div class="card-body">
 
-                        <form action="{{ route('customer.register') }}" method="POST">
+                        <form action="{{ route('customer.register') }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                                @if ($errors->has('name'))
+                                    <div class="alert alert-danger">{{ $errors->first('name') }}</div>
+                                @endif
                             <div class="form-group mb-3">
                                 <input type="text" placeholder="Name" id="name" class="form-control" name="name"
-                                    required autofocus>
-                                @if ($errors->has('name'))
-                                <span class="text-danger">{{ $errors->first('name') }}</span>
-                                @endif
+                                 value="{{old('name')}}">
                             </div>
 
+                            @if ($errors->has('email'))
+                                <div class="alert alert-danger">{{ $errors->first('email') }}</div>
+                            @endif
                             <div class="form-group mb-3">
                                 <input type="text" placeholder="Email" id="email_address" class="form-control"
-                                    name="email" required autofocus>
-                                @if ($errors->has('email'))
-                                <span class="text-danger">{{ $errors->first('email') }}</span>
-                                @endif
+                                    name="email" value="{{old('email')}}">
                             </div>
 
+                            @if ($errors->has('password'))
+                                <div class="alert alert-danger">{{ $errors->first('password') }}</div>
+                            @endif
                             <div class="form-group mb-3">
                                 <input type="password" placeholder="Password" id="password" class="form-control"
-                                    name="password" required>
-                                @if ($errors->has('password'))
-                                <span class="text-danger">{{ $errors->first('password') }}</span>
-                                @endif
+                                    name="password">
+                            </div>
+
+                            @if ($errors->has('confirm_password'))
+                                <div class="alert alert-danger">{{ $errors->first('confirm_password') }}</div>
+                            @endif
+                            <div class="form-group mb-3">
+                                <input type="password" placeholder="Confirm Password" id="confirm_password" class="form-control"
+                                    name="confirm_password">
+                            </div>
+
+                            @if ($errors->has('profile'))
+                                <div class="alert alert-danger">{{ $errors->first('profile') }}</div>
+                            @endif
+                            <div class="form-group form-group mb-3">
+                                <label for="image">Profile</label><span style="color:red;">*</span>
+                                <input type="file" name="profile" class="form-control">
                             </div>
 
                             <div class="d-grid mx-auto">

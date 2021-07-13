@@ -22,6 +22,7 @@ Route::get('/login', 'CustomerController@login');
 Route::post('customer-login', 'CustomerController@customerLogin')->name('customer.login'); 
 Route::get('/register', 'CustomerController@register');
 Route::post('customer-registration', 'CustomerController@customerRegister')->name('customer.register'); 
+Route::get('/logout','CustomerController@logout');
 
 //Checkout
 Route::get('/checkout','CheckoutController@index');
@@ -30,6 +31,26 @@ Route::post('/checkout/save-order', 'CheckoutController@saveOrder')->name('check
 
 Route::get('/checkout/thank-you', 'CheckoutController@thankYou');
 
-Route::get('/admin','AdminController@index');
+Route::get('/admin/login','Admin\LoginController@login');
+Route::post('/admin/adminLogin','Admin\LoginController@adminLogin');
+Route::get('/admin/logout','Admin\LoginController@logout');
+
+Route::get('/admin','Admin\AdminController@index');
+
+Route::get('/admin/customers','Admin\CustomerController@index');
+Route::get('/admin/customers/{id}','Admin\CustomerController@show');
+
+Route::get('/admin/products','Admin\ProductController@index');
+Route::get('/admin/products/add','Admin\ProductController@add');
+Route::post('/admin/products/create','Admin\ProductController@create');
+Route::get('/admin/products/edit/{id}','Admin\ProductController@edit');
+Route::post('/admin/products/update/{id}','Admin\ProductController@update');
+Route::get('/admin/products/delete/{id}','Admin\ProductController@delete');
+
+Route::get('/admin/transactions','Admin\TransactionController@index');
+Route::get('/admin/transactions/{id}','Admin\TransactionController@show');
+
+
+
 
 

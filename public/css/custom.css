@@ -23,7 +23,7 @@ a:focus, a:hover {
 }
 
 .btn-view-all{
-    background-color:#117a8b;
+    background-color:#17a2b8;
     padding-top:5px;
     color:#fff;
 }
@@ -40,3 +40,19 @@ a:focus, a:hover {
     color: #fff!important;
     background-color: #17a2b8!important;
 }
+.navbar-item a:hover{
+    background-color: transparent !important;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    pointer-events: all !important;
+}
+
+.logout-btn{
+    background-color:#17a2b8 !important;
+    color:#fff!important;
+}
+
+
+
