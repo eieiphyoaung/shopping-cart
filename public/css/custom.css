@@ -1,0 +1,42 @@
+.heading{
+    width: 100%;
+    display: inline-block;
+}
+
+.btn-new-customer {
+    float: right;
+    font-size: 16px;
+}
+
+a:focus, a:hover {
+    text-decoration: none;
+}
+
+.new-btn{
+    color: #fff!important;
+    background-color: #138496!important;
+}
+
+.btn-signin, .btn-register{
+    color: #fff!important;
+    background-color:#17a2b8 !important;
+}
+
+.btn-view-all{
+    background-color:#117a8b;
+    padding-top:5px;
+    color:#fff;
+}
+.btn-view-all:focus, .btn-view-all:hover {
+    text-decoration: none;
+    color:#fff;
+}
+
+.order-btn{
+    font-weight: 600;
+    padding: 10px 20px;
+    vertical-align: top;
+    border: 1px solid transparent;
+    color: #fff!important;
+    background-color: #17a2b8!important;
+}
